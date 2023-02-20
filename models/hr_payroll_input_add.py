@@ -9,7 +9,7 @@ from odoo.exceptions import ValidationError, UserError
 class HrPayrollInputAdd(models.Model):
     _name = 'hr.payroll.input.add'
     _inherit = ['mail.thread', 'mail.activity.mixin']
-    _description = "Payroll add Request"
+    _description = "Payroll Add Request"
 
     @api.model
     def default_get(self, field_list):
@@ -48,8 +48,7 @@ class HrPayrollInputAdd(models.Model):
     job_position = fields.Many2one('hr.job', related="employee_id.job_id", readonly=True, string="Job Position",
                                    help="Job position")
     add_amount = fields.Float(string="Add amount", required=True, help="Payroll add amount")
- 
-    
+
     state = fields.Selection([
         ('draft', 'Draft'),
         ('waiting_approval_1', 'Submitted'),
@@ -57,6 +56,8 @@ class HrPayrollInputAdd(models.Model):
         ('refuse', 'Refused'),
         ('cancel', 'Canceled'),
     ], string="State", default='draft', track_visibility='onchange', copy=False, )
+
+    payslip_id = fields.Many2one('hr.payslip', string="Payslip Ref.", help="Payslip")
 
     @api.model
     def create(self, values):
