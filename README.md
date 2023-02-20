@@ -1,4 +1,4 @@
-Payroll input add (STIMULACIJA)
+Payroll Input Add
 ================================
 
 Addition to NETO salary (bosnian: STIMULACIJA)

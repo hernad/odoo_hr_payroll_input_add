@@ -31,7 +31,7 @@
     'company': 'bring.out doo Sarajevo',
     'maintainer': 'bring.out doo Sarajevo',
     'depends': [
-        'base', 'hr', 'payroll', 'l10n_bs_hr_payroll_fuelboss',
+        'base', 'hr', 'payroll',
     ],
     'data': [
         'security/ir.model.access.csv',
