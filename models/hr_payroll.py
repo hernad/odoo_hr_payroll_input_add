@@ -60,7 +60,17 @@ class HrPayslip(models.Model):
                            """
         res = super(HrPayslip, self).get_inputs(contract_ids, date_from, date_to)
         contract_obj = self.env['hr.contract']
-        emp_id = contract_obj.browse(contract_ids[0].id).employee_id
+
+        contract_for_add = None
+        for contract in contract_ids:
+            if not ('INO' in contract.struct_id.code):
+                contract_for_add = contract
+                break
+
+        if not contract_for_add:
+            return res
+
+        emp_id = contract_obj.browse(contract_for_add.id).employee_id
         db_payroll_add = self.env['hr.payroll.input.add'].search([('employee_id', '=', emp_id.id), ('state', '=', 'approve')])
         for payroll_add in db_payroll_add:
 
