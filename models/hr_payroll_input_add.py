@@ -74,6 +74,11 @@ class HrPayrollInputAdd(models.Model):
         return res
 
  
+    def action_move_to_status_draft(self):
+        for input_add_id in self._context['active_ids']:
+            input_add = self.env['hr.payroll.input.add'].browse(input_add_id)
+            input_add.write({'state': 'draft'})
+
     def action_refuse(self):
         return self.write({'state': 'refuse'})
 

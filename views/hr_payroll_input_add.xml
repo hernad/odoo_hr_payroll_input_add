@@ -141,4 +141,16 @@
             </xpath>
         </field>
     </record>
+
+
+    <record id="action_status_draft" model="ir.actions.server">
+            <field name="name">Prebaci u pripremu</field>
+            <field name="model_id" ref="hr_payroll_input_add.model_hr_payroll_input_add"/>
+            <field name="binding_model_id" ref="hr_payroll_input_add.model_hr_payroll_input_add"/>
+            <field name="binding_view_types">list,form</field>
+            <field name="state">code</field>
+            <field name="code">
+                action = model.action_move_to_status_draft()
+            </field>
+    </record>
 </odoo>
